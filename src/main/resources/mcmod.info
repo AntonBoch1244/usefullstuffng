@@ -1,0 +1,20 @@
+[
+    {
+        "modid": "usefullstuffng",
+        "name": "Usefull Stuff Next Gen",
+        "description": "Usefull Stuff Next Gen mod.",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": [
+            "anton"
+        ],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [
+        ],
+        "dependencies": [
+        ]
+    }
+]
