@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 /**
- * This class use for auto accepting Mojang AB EULA on Modded Minecraft Server with Minecraft Forgw or Forge Mod Loader
+ * This class use for auto accepting Mojang AB EULA on Modded Minecraft Server with Minecraft Forge or Forge Mod Loader
  * @author anton and R4K
  */
 public class autoAcceptingEula {

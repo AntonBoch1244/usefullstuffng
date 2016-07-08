@@ -29,7 +29,7 @@ public class commandBlockScan implements ICommand {
     /**
      * This function return usage of command
      * @param sender    you
-     * @return          blockscan <radius=[0;128]> <blockName1> [blockNameN] - blocks scanning in the player radius by name
+     * @return          blockscan &lt;radius=[0;128]&gt; &lt;blockName1&gt; [blockNameN] - blocks scanning in the player radius by name
      */
     @Override
     public String getCommandUsage(ICommandSender sender) {
@@ -49,27 +49,25 @@ public class commandBlockScan implements ICommand {
     /**
      * This method trying calculate number of named by sender blocks[1;Inf) in radius args[0] of action
      * Searching algorithm is (need improve)
-     * <ul>
-     *     <ol>Get Player as entity for start searching</ol>
-     *     <ol>Get Player coordinates in the world</ol>
-     *     <ol>Get Radius of searching</ol>
-     *     <ol>If error in syntax of command or radius is big then 128 then returned usage of command</ol>
-     *     <ol>In cycle
-     *     <ul>
-     *          <ol>Get name or id of block in block names array</ol>
-     *          <ol>Get x coordinate of start searching</ol>
-     *          <ol>Get y coordinate of start searching</ol>
-     *          <ol>Get z coordinate of start searching</ol>
-     *          <ol>Checking block</ol>
-     *          <ol>If block unlocalized name is equals unlocalized name of block parameter then add that block to counter else not</ol>
-     *          <ol>Increase z and try again to moment z is go out of radius</ol>
-     *          <ol>Increase y and try again to moment y is go out of maximal height of world</ol>
-     *          <ol>Increase x and try again to moment x is go out of radius</ol>
-     *          <ol>If block name or id is not found in game then return no block message else send to sender localized name of counted blocks and count</ol>
-     *          <ol>Get next block name or id in array and try again to moment end of block names array</ol>
-     *     </ul>
+     * <ol>
+     *     <li>Get Player as entity for start searching
+     *     <li>Get Player coordinates in the world
+     *     <li>Get Radius of searching
+     *     <li>If error in syntax of command or radius is big then 128 then returned usage of command <br>
+     *     In cycle: <ol>
+     *          <li>Get name or id of block in block names array
+     *          <li>Get x coordinate of start searching
+     *          <li>Get y coordinate of start searching
+     *          <li>Get z coordinate of start searching
+     *          <li>Checking block
+     *          <li>If block unlocalized name is equals unlocalized name of block parameter then add that block to counter else not
+     *          <li>Increase z and try again to moment z is go out of radius
+     *          <li>Increase y and try again to moment y is go out of maximal height of world
+     *          <li>Increase x and try again to moment x is go out of radius
+     *          <li>If block name or id is not found in game then return no block message else send to sender localized name of counted blocks and count
+     *          <li>Get next block name or id in array and try again to moment end of block names array
      *     </ol>
-     * </ul>
+     * </ol>
      * @param sender    you
      * @param args      radius and block list
      */
