@@ -12,45 +12,52 @@ import java.util.List;
 
 public class commandGetChunk implements ICommand {
 
-    private EntityPlayerMP iPlayer;
-
     @Override
     public String getCommandName() {
         return "getchunk";
     }
 
     @Override
-    public String getCommandUsage(ICommandSender p_71518_1_) {
+    public String getCommandUsage(ICommandSender sender) {
         return "getchunk - output chunk of player";
     }
 
     @Override
     public List getCommandAliases() {
-        return Arrays.asList(new String[] {
-            "gc",
-            "chunk"
-        });
+        return Arrays.asList("gc", "chunk");
     }
 
     @Override
-    public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
-        iPlayer = CommandBase.getCommandSenderAsPlayer(p_71515_1_);
-        ChatComponentText message = new ChatComponentText("Chunk: " + String.valueOf(p_71515_1_.getEntityWorld().getChunkFromBlockCoords(iPlayer.getPlayerCoordinates().posX, iPlayer.getPlayerCoordinates().posZ).xPosition) + ", " + String.valueOf(p_71515_1_.getEntityWorld().getChunkFromBlockCoords(iPlayer.getPlayerCoordinates().posX, iPlayer.getPlayerCoordinates().posZ).zPosition));
-        p_71515_1_.addChatMessage(message);
+    public void processCommand(ICommandSender sender, String[] args) {
+        EntityPlayerMP iPlayer = CommandBase.getCommandSenderAsPlayer(sender);
+        ChatComponentText message = new ChatComponentText("Chunk: " +
+                String.valueOf(
+                        sender.getEntityWorld().getChunkFromBlockCoords(
+                                iPlayer.getPlayerCoordinates().posX,
+                                iPlayer.getPlayerCoordinates().posZ
+                        ).xPosition
+                ) + ", " +
+                String.valueOf(
+                        sender.getEntityWorld().getChunkFromBlockCoords(
+                                iPlayer.getPlayerCoordinates().posX,
+                                iPlayer.getPlayerCoordinates().posZ
+                        ).zPosition
+                ));
+        sender.addChatMessage(message);
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
         return true;
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
+    public List addTabCompletionOptions(ICommandSender sender, String[] args) {
         return null;
     }
 
     @Override
-    public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+    public boolean isUsernameIndex(String[] usernameList, int index) {
         return false;
     }
 

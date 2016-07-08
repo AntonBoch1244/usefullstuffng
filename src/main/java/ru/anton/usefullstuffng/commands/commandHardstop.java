@@ -16,40 +16,32 @@ public class commandHardstop implements ICommand {
     }
 
     @Override
-    public String getCommandUsage(ICommandSender p_71518_1_) {
+    public String getCommandUsage(ICommandSender sender) {
         return "hardstop - is kill-switch for server";
     }
 
     @Override
     public List getCommandAliases() {
-        return Arrays.asList(new String[] {
-                "hs",
-                "killserver"
-        });
+        return Arrays.asList("hs", "killserver");
     }
 
     @Override
-    public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
+    public void processCommand(ICommandSender sender, String[] args) {
         new FMLCommonHandler().exitJava(0, true);
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
-        if (p_71519_1_.getCommandSenderName() == "Server") {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        return sender.getCommandSenderName().equals("Server");
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
+    public List addTabCompletionOptions(ICommandSender sender, String[] args) {
         return null;
     }
 
     @Override
-    public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+    public boolean isUsernameIndex(String[] usernameList, int index) {
         return false;
     }
 

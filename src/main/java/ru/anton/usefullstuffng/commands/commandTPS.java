@@ -16,7 +16,7 @@ public class commandTPS implements ICommand {
     }
 
     @Override
-    public String getCommandUsage(ICommandSender p_71518_1_) {
+    public String getCommandUsage(ICommandSender sender) {
         return "tps - check tps overall server";
     }
 
@@ -26,27 +26,27 @@ public class commandTPS implements ICommand {
     }
 
     @Override
-    public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
+    public void processCommand(ICommandSender sender, String[] args) {
         double tt = 0;
         for (Long i : (this.getServer().tickTimeArray)) {
             tt = tt+i;
         }
         double tps = Math.min(1000.0/(tt * 1.0E-6D), 20);
-        p_71515_1_.addChatMessage(new ChatComponentText("TPS: " + new DecimalFormat("########0.000").format(tps)));
+        sender.addChatMessage(new ChatComponentText("TPS: " + new DecimalFormat("########0.000").format(tps)));
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
         return true;
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
+    public List addTabCompletionOptions(ICommandSender sender, String[] args) {
         return null;
     }
 
     @Override
-    public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+    public boolean isUsernameIndex(String[] usernameList, int index) {
         return false;
     }
 

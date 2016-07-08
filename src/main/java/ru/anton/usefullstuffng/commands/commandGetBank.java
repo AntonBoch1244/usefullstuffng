@@ -10,9 +10,11 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
-public class commandGetBank implements ICommand {
+/**
+ * Command getBank is implementation of ICommand
+ */
 
-    private EntityPlayerMP iPlayer;
+public class commandGetBank implements ICommand {
 
     @Override
     public String getCommandName() {
@@ -20,37 +22,46 @@ public class commandGetBank implements ICommand {
     }
 
     @Override
-    public String getCommandUsage(ICommandSender p_71518_1_) {
+    public String getCommandUsage(ICommandSender sender) {
         return "getbank - output chunkBank of player";
     }
 
     @Override
     public List getCommandAliases() {
-        return Arrays.asList(new String[] {
-                "gb",
-                "bank"
-        });
+        return Arrays.asList("gb", "bank");
     }
 
     @Override
-    public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
-        iPlayer = CommandBase.getCommandSenderAsPlayer(p_71515_1_);
-        ChatComponentText message = new ChatComponentText("Bank: " + String.valueOf((int) p_71515_1_.getEntityWorld().getChunkFromBlockCoords(iPlayer.getPlayerCoordinates().posX, iPlayer.getPlayerCoordinates().posZ).xPosition/16) + ", " + String.valueOf((int) p_71515_1_.getEntityWorld().getChunkFromBlockCoords(iPlayer.getPlayerCoordinates().posX, iPlayer.getPlayerCoordinates().posZ).zPosition/16));
-        p_71515_1_.addChatMessage(message);
+    public void processCommand(ICommandSender sender, String[] args) {
+        EntityPlayerMP iPlayer = CommandBase.getCommandSenderAsPlayer(sender);
+        ChatComponentText message = new ChatComponentText("Bank: " +
+                String.valueOf(
+                        sender.getEntityWorld().getChunkFromBlockCoords(
+                                iPlayer.getPlayerCoordinates().posX,
+                                iPlayer.getPlayerCoordinates().posZ
+                        ).xPosition /16
+                ) + ", " +
+                String.valueOf(
+                        sender.getEntityWorld().getChunkFromBlockCoords(
+                                iPlayer.getPlayerCoordinates().posX,
+                                iPlayer.getPlayerCoordinates().posZ
+                        ).zPosition /16)
+        );
+        sender.addChatMessage(message);
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
         return true;
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
+    public List addTabCompletionOptions(ICommandSender sender, String[] args) {
         return null;
     }
 
     @Override
-    public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+    public boolean isUsernameIndex(String[] usernameList, int index) {
         return false;
     }
 

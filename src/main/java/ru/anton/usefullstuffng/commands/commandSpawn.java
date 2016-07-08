@@ -9,37 +9,35 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.List;
 
 public class commandSpawn implements ICommand {
-
-    private EntityPlayerMP iPlayer;
 
     @Override public String getCommandName() {
         return "spawn";
     }
 
-    @Override public String getCommandUsage(ICommandSender p_71518_1_) {
-        return "spawn - teleport player to spawnpoint";
+    @Override public String getCommandUsage(ICommandSender sender) {
+        return "spawn - teleport player to spawn point at 0 dimension";
     }
 
     @Override public List getCommandAliases() {
-        return Arrays.asList(new String[] {});
+        return null;
     }
 
-    @Override public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
-        ChunkCoordinates sp = p_71515_1_.getEntityWorld().getSpawnPoint();
-        iPlayer = CommandBase.getCommandSenderAsPlayer(p_71515_1_);
+    @Override public void processCommand(ICommandSender sender, String[] args) {
+        ChunkCoordinates sp = sender.getEntityWorld().getSpawnPoint();
+        EntityPlayerMP iPlayer = CommandBase.getCommandSenderAsPlayer(sender);
         if (iPlayer.dimension == 1) {
-            iPlayer.addChatMessage(new ChatComponentText("You are in The End dimension and server can\'t extract you from them!"));
+            iPlayer.addChatMessage(new ChatComponentText(
+                    "You are in The End dimension and server can\'t extract you from them!"));
         }
         else {
             if (iPlayer.dimension != 0) {
                 iPlayer.playerNetServerHandler.playerEntity.travelToDimension(0);
             }
-            int gsy = p_71515_1_.getEntityWorld().getHeight();
-            while (p_71515_1_.getEntityWorld().getBlock(sp.posX, gsy, sp.posZ) == Blocks.air) {
+            int gsy = sender.getEntityWorld().getHeight();
+            while (sender.getEntityWorld().getBlock(sp.posX, gsy, sp.posZ) == Blocks.air) {
                 --gsy;
             }
             gsy++;
@@ -48,15 +46,15 @@ public class commandSpawn implements ICommand {
         }
     }
 
-    @Override public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
+    @Override public boolean canCommandSenderUseCommand(ICommandSender sender) {
         return true;
     }
 
-    @Override public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
+    @Override public List addTabCompletionOptions(ICommandSender sender, String[] args) {
         return null;
     }
 
-    @Override public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+    @Override public boolean isUsernameIndex(String[] usernameList, int index) {
         return false;
     }
 

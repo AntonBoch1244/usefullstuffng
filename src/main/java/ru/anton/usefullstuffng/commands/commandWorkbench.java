@@ -10,7 +10,7 @@ import net.minecraft.network.play.server.S2DPacketOpenWindow;
 import javax.annotation.Nullable;
 import java.util.List;
 
-//For Reasons Can't work
+//For reasons can't work | Yes in mod file are commented registering of command because workbench is not working for me
 public class commandWorkbench implements ICommand {
     @Override
     public String getCommandName() {
@@ -18,7 +18,7 @@ public class commandWorkbench implements ICommand {
     }
 
     @Override
-    public String getCommandUsage(ICommandSender p_71518_1_) {
+    public String getCommandUsage(ICommandSender sender) {
         return "workbench - open workbench without workbench in inventory";
     }
 
@@ -28,8 +28,8 @@ public class commandWorkbench implements ICommand {
     }
 
     @Override
-    public void processCommand(ICommandSender p_71515_1_, String[] p_71515_2_) {
-        EntityPlayerMP iPlayer = CommandBase.getCommandSenderAsPlayer(p_71515_1_);
+    public void processCommand(ICommandSender sender, String[] args) {
+        EntityPlayerMP iPlayer = CommandBase.getCommandSenderAsPlayer(sender);
         iPlayer.getNextWindowId();
         iPlayer.playerNetServerHandler.sendPacket(new S2DPacketOpenWindow(iPlayer.currentWindowId, 1, "Air Workbench", 9, true));
         iPlayer.openContainer = new ContainerWorkbench(iPlayer.inventory, iPlayer.getEntityWorld(), iPlayer.getPlayerCoordinates().posX, iPlayer.getPlayerCoordinates().posY, iPlayer.getPlayerCoordinates().posZ);
@@ -38,17 +38,17 @@ public class commandWorkbench implements ICommand {
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
         return true;
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
+    public List addTabCompletionOptions(ICommandSender sender, String[] args) {
         return null;
     }
 
     @Override
-    public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) {
+    public boolean isUsernameIndex(String[] usernameList, int index) {
         return false;
     }
 
