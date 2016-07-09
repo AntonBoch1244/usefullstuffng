@@ -2,7 +2,7 @@ Usefull Stuff Next Gen
 ======================
 That mod used on server or server operators or players who can mind how works Minecraft Server with Minecraft Forge Mod.
 
-//Here to be stats of the mod\\\\
+Build status: [![Build Status](https://travis-ci.org/AntonBoch1244/usefullstuffng.svg?branch=master)](https://travis-ci.org/AntonBoch1244/usefullstuffng)
 
 Rules of Documentation [Here](JavaDocRequirements.md).
 
