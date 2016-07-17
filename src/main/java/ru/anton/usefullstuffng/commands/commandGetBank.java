@@ -10,9 +10,6 @@ import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Command getBank is implementation of ICommand
- */
 
 public class commandGetBank implements ICommand {
 

@@ -16,10 +16,6 @@ import ru.anton.usefullstuffng.events.autoAcceptingEula;
         acceptableRemoteVersions = "*"
 )
 
-/**
- * This are main-class of mod
- * @author anton
- */
 public class usefullstuffng {
 
     @Mod.Instance(reference.modid)
