@@ -1,9 +1,11 @@
 package ru.anton.usefullstuffng.commands;
 
+import net.minecraft.block.Block;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.network.play.server.S2DPacketOpenWindow;
 
@@ -30,11 +32,9 @@ public class commandWorkbench implements ICommand {
     @Override
     public void processCommand(ICommandSender sender, String[] args) {
         EntityPlayerMP iPlayer = CommandBase.getCommandSenderAsPlayer(sender);
-        iPlayer.getNextWindowId();
-        iPlayer.playerNetServerHandler.sendPacket(new S2DPacketOpenWindow(iPlayer.currentWindowId, 1, "Air Workbench", 9, true));
-        iPlayer.openContainer = new ContainerWorkbench(iPlayer.inventory, iPlayer.getEntityWorld(), iPlayer.getPlayerCoordinates().posX, iPlayer.getPlayerCoordinates().posY, iPlayer.getPlayerCoordinates().posZ);
-        iPlayer.openContainer.windowId = iPlayer.currentWindowId;
-        iPlayer.openContainer.addCraftingToCrafters(iPlayer);
+        Block oldBlock = sender.getEntityWorld().getBlock(iPlayer.getCommandSenderPosition().posX, iPlayer.getCommandSenderPosition().posY, iPlayer.getCommandSenderPosition().posZ);
+        sender.getEntityWorld().setBlock(iPlayer.getCommandSenderPosition().posX, iPlayer.getCommandSenderPosition().posY, iPlayer.getCommandSenderPosition().posZ, Blocks.crafting_table);
+        sender.getEntityWorld().setBlock(iPlayer.getCommandSenderPosition().posX, iPlayer.getCommandSenderPosition().posY, iPlayer.getCommandSenderPosition().posZ, oldBlock);
     }
 
     @Override

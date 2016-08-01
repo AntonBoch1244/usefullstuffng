@@ -33,14 +33,14 @@ public class commandGetChunk implements ICommand {
         ChatComponentText message = new ChatComponentText("Chunk: " +
                 String.valueOf(
                         sender.getEntityWorld().getChunkFromBlockCoords(
-                                iPlayer.getPlayerCoordinates().posX,
-                                iPlayer.getPlayerCoordinates().posZ
+                                iPlayer.getCommandSenderPosition().posX,
+                                iPlayer.getCommandSenderPosition().posZ
                         ).xPosition
                 ) + ", " +
                 String.valueOf(
                         sender.getEntityWorld().getChunkFromBlockCoords(
-                                iPlayer.getPlayerCoordinates().posX,
-                                iPlayer.getPlayerCoordinates().posZ
+                                iPlayer.getCommandSenderPosition().posX,
+                                iPlayer.getCommandSenderPosition().posZ
                         ).zPosition
                 ));
         sender.addChatMessage(message);

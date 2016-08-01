@@ -21,29 +21,17 @@ public class usefullstuffng {
     @Mod.Instance(reference.modid)
     public static usefullstuffng instance;
 
-    /**
-     * This method auto accept EULA on servers
-     * @param e server pre-initialization event of Minecraft Forge
-     */
     @SideOnly(Side.SERVER)
     @Mod.EventHandler
     public void serverPreInit(FMLPreInitializationEvent e) {
         new autoAcceptingEula();
     }
 
-    /**
-     * This method been used in future
-     * @param e client pre-initialization event of Minecraft Forge
-     */
     @SideOnly(Side.CLIENT)
     @Mod.EventHandler
     public void clientPreInit(FMLPreInitializationEvent e) {
     }
 
-    /**
-     * This method been used for registering commands for server
-     * @param e server starting event of Minecraft Forge
-     */
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent e) {
         e.registerServerCommand(new commandGetChunk());
@@ -51,9 +39,10 @@ public class usefullstuffng {
         e.registerServerCommand(new commandSpawn());
         e.registerServerCommand(new commandHardstop());
         e.registerServerCommand(new commandTPS());
-        // FIXME WB PACKET EVENT
-        // TODO FIX: e.registerServerCommand(new commandWorkbench());
+        // TODO: WB MAKE CRAFT
+        // TODO e.registerServerCommand(new commandWorkbench());
         e.registerServerCommand(new commandBlockScan());
-
+        // TODO: NBT Data Getter
+        e.registerServerCommand(new commandGetNBTData());
     }
 }

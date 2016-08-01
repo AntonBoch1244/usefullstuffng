@@ -15,7 +15,7 @@ public class IBlockScan {
      * @param blockUnlocalizedName  searching block
      * @return                      is equals or false if detected error
      */
-    public static boolean checkBlock(ICommandSender sender, int x, int y, int z, String blockUnlocalizedName) {
+    static boolean checkBlock(ICommandSender sender, int x, int y, int z, String blockUnlocalizedName) {
         try {
             return sender.getEntityWorld().getBlock(x, y, z).getUnlocalizedName().equals(blockUnlocalizedName);
         }

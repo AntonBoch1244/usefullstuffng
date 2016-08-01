@@ -9,3 +9,4 @@ run
 *.iml
 *.iws
 *.ipr
+out/

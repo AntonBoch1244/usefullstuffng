@@ -34,14 +34,14 @@ public class commandGetBank implements ICommand {
         ChatComponentText message = new ChatComponentText("Bank: " +
                 String.valueOf(
                         sender.getEntityWorld().getChunkFromBlockCoords(
-                                iPlayer.getPlayerCoordinates().posX,
-                                iPlayer.getPlayerCoordinates().posZ
+                                iPlayer.getCommandSenderPosition().posX,
+                                iPlayer.getCommandSenderPosition().posZ
                         ).xPosition /16
                 ) + ", " +
                 String.valueOf(
                         sender.getEntityWorld().getChunkFromBlockCoords(
-                                iPlayer.getPlayerCoordinates().posX,
-                                iPlayer.getPlayerCoordinates().posZ
+                                iPlayer.getCommandSenderPosition().posX,
+                                iPlayer.getCommandSenderPosition().posZ
                         ).zPosition /16)
         );
         sender.addChatMessage(message);

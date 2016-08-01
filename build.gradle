@@ -18,13 +18,14 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0-u1-1.7.10"
+version = "1.0-u2-1.7.10"
 group= "ru.anton.usefullstuffng" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "usefullstuffng"
 
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "run"
+    mappings = 'snapshot_20140925'
 }
 
 dependencies {
