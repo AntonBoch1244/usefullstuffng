@@ -1,12 +1,17 @@
 package ru.anton.usefullstuffng;
 
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLConstructionEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.Minecraft;
 import ru.anton.usefullstuffng.commands.*;
 import ru.anton.usefullstuffng.events.autoAcceptingEula;
+
+import java.io.File;
+import java.io.IOException;
 
 @Mod(
         modid = reference.modid,
@@ -29,6 +34,15 @@ public class usefullstuffng {
 
     @SideOnly(Side.CLIENT)
     @Mod.EventHandler
+    public void clientConstruct(FMLConstructionEvent e) {
+        System.setProperty("org.lwjgl.opengl.Display.allowSoftwareOpenGL","true");
+        for (String i : System.getProperties().stringPropertyNames()){
+            //DEBUG
+            System.out.println(i + ": " + System.getProperties().getProperty(i));
+        }
+    }
+    @SideOnly(Side.CLIENT)
+    @Mod.EventHandler
     public void clientPreInit(FMLPreInitializationEvent e) {
     }
 
@@ -43,6 +57,7 @@ public class usefullstuffng {
         // TODO e.registerServerCommand(new commandWorkbench());
         e.registerServerCommand(new commandBlockScan());
         // TODO: NBT Data Getter
-        e.registerServerCommand(new commandGetNBTData());
+        // TODO e.registerServerCommand(new commandGetNBTData());
+        // TODO WIP MileStone 1.1 e.registerServerCommand(new commandChunkManage());
     }
 }

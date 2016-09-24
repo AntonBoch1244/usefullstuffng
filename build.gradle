@@ -11,14 +11,13 @@ buildscript {
         }
     }
     dependencies {
-
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
 
 apply plugin: 'forge'
 
-version = "1.0-u2-1.7.10"
+version = "1.0-u4-1.7.10"
 group= "ru.anton.usefullstuffng" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "usefullstuffng"
 
